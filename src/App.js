@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(null);
   const [coords, setCoords] = useState(null);
   const [current, setCurrent] = useState({
     temp_c: "",
@@ -28,7 +29,7 @@ function App() {
   };
 
   useEffect(() => {
-    const apiURL = `http://api.weatherapi.com/v1/current.json?key=7beb60fd8e0d46e2a49185238221507&q=40.9940877, 28.770898&aqi=no`;
+    const apiURL = `http://api.weatherapi.com/v1/current.json?key=7beb60fd8e0d46e2a49185238221507&q=${coords}&aqi=no`;
     fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
@@ -53,18 +54,33 @@ function App() {
   return (
     <div className="App">
       <span>{coords}</span>
-      <button onClick={getLocation}>Hava durumunu getir</button>
-      <div>
-        <img src={current.icon} alt="" />
-        <span>{current.temp}</span>
-        <span>{current.feelslike_c}</span>
-      </div>
-      <div>
-        <div>{location.name}</div>
-        <div>{location.region}</div>
-        <div>{location.country}</div>
-        <div>{location.localtime}</div>
-      </div>
+      <button className="weatherButton" onClick={getLocation}>
+        Hava durumunu getir
+      </button>
+
+      {!loading && (
+        <div>
+          <div className="weather">
+            <img src={current.icon} alt="" />
+            <div>
+              Sıcaklık
+              <span>{current.temp}</span>
+            </div>
+            <div>
+              Hissedilen
+              <span>{current.feelslike_c}</span>
+            </div>
+          </div>
+          <div>
+            <div className="location">
+              <span>{location.name}</span> - <span>{location.region}</span> -{" "}
+              <span>{location.country}</span>
+            </div>
+            <div className="time">{location.localtime}</div>
+          </div>
+        </div>
+      )}
+      {loading && <div className="loading"><span>Yükleniyor</span></div>}
     </div>
   );
 }

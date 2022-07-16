@@ -1,38 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body{
+  font-family: 'Jost', sans-serif;
+}
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.weatherButton {
+  background-color: #03a9fa;
+  border: 0;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 17px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #48baf4;
+  width: 250px;
+  padding: 0 20px;
+  margin: 20px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weather span {
+  font-size: 24px;
+  font-weight: 500;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather span,
+.weather div {
+  color: white;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weather div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  font-size: 20px;
 }
-
-.App-link {
-  color: #61dafb;
+.location span {
+  font-size: 18px;
+  font-weight: 600;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.time {
+  font-size: 14px;
+  color: #a5a5a5;
 }
