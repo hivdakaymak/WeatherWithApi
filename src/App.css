@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-body{
-  font-family: 'Jost', sans-serif;
+body {
+  font-family: "Jost", sans-serif;
 }
 .App {
   text-align: center;
@@ -52,4 +52,8 @@ body{
 .time {
   font-size: 14px;
   color: #a5a5a5;
+}
+.loading img {
+  height: 130px;
+  margin: 20px 20;
 }

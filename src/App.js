@@ -22,6 +22,7 @@ function App() {
     if (!navigator.geolocation) {
       alert("Geolocation bulunamadı");
     } else {
+      setLoading(true)
       navigator.geolocation.getCurrentPosition((position) => {
         setCoords(`${position.coords.latitude}, ${position.coords.longitude}`);
       });
@@ -29,6 +30,7 @@ function App() {
   };
 
   useEffect(() => {
+    setLoading(true);
     const apiURL = `http://api.weatherapi.com/v1/current.json?key=7beb60fd8e0d46e2a49185238221507&q=${coords}&aqi=no`;
     fetch(apiURL)
       .then((res) => res.json())
@@ -44,6 +46,7 @@ function App() {
           country: data.location.country,
           localtime: data.location.localtime,
         });
+        setLoading(false);
       });
   }, [coords]);
   // süslü parantezden sonra gelen [] işareti sayfa açıldığında bir
@@ -80,7 +83,16 @@ function App() {
           </div>
         </div>
       )}
-      {loading && <div className="loading"><span>Yükleniyor</span></div>}
+      {loading && (
+        <div className="loading">
+          <span>
+            <img
+              src="http://ecenazhediyelik.com/Assets/images/loader.gif"
+              alt="yükleniyor"
+            />
+          </span>
+        </div>
+      )}
     </div>
   );
 }
