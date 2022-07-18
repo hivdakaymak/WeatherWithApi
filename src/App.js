@@ -56,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="app-box">
       <span>{coords}</span>
       <button className="weatherButton" onClick={getLocation}>
         Hava durumunu getir
@@ -93,6 +94,7 @@ function App() {
           </span>
         </div>
       )}
+      </div>
     </div>
   );
 }
